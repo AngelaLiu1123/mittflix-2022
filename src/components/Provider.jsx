@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import placeholder from "../assets/image-not-available.jpg";
+import styles from "./Provider.module.css";
 
 const Provider = ({ provider }) => {
-  const { logo_path, provider_name } = provider;
-  // console.log(logo_path);
-  // console.log(provider_name);
+  const { provider_id, logo_path, provider_name } = provider;
+  let navigate = useNavigate();
+  const handleClick = () => {
+    navigate({ pathname: "/showsByProvider", search: `id=${provider_id}` });
+  };
   const poster = logo_path
     ? `https://image.tmdb.org/t/p/w500/${logo_path}`
     : placeholder;
   return (
-    <div className="movie">
-      <Link to={`/details/8`}>
-        <img src={poster} alt="Movie poster" />
-        <div className="overlay">
-          <div className="title">{provider_name}</div>
-        </div>
-      </Link>
+    <div onClick={handleClick} className={styles["movie"]}>
+      {/* <Link to={`/ShowsByProvider?id=${provider_id}`}> */}
+      <img src={poster} alt="Movie poster" />
+      <div className={styles["overlay"]}>
+        <div className={styles["title"]}>{provider_name}</div>
+      </div>
+      {/* </Link> */}
     </div>
   );
 };

@@ -5,7 +5,7 @@ const searchEndpoint = '/search/tv';
 const detailsEndpoint = '/tv';
 const watchProviderEndpoint = '/watch/providers/tv'
 
-const getShowsByProviderId = async (id) => {
+export const getShowsByProviderId = async (id) => {
   const request = await fetch(
     BASE_URL +
     discoverEndpoint +
@@ -13,6 +13,7 @@ const getShowsByProviderId = async (id) => {
   );
   const response = await request.json();
   const shows = await response.results;
+  //console.log(shows);
   return shows;
 };
 
@@ -29,15 +30,17 @@ export const getShowsByAllProviders = (providers) => {
   return Promise.all(responses);
 };
 
-export const searchShows = async (query) => {
+export const searchShows = async (query, page) => {
   const URL =
     BASE_URL +
     searchEndpoint +
-    `?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
+    `?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`;
   const request = await fetch(URL);
   const response = await request.json();
-  const shows = await response.results;
-  return shows;
+  const data = await response;
+  // console.log(data.total_pages);
+  // console.log(data.page);
+  return data;
 };
 
 export const getShowDetails = async (id) => {
@@ -56,6 +59,6 @@ export const getAllProviders = async () => {
   const request = await fetch(URL);
   const response = await request.json();
   const providers = await response.results;
-  console.log(providers);
+  //console.log(providers);
   return providers;
 };
