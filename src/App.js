@@ -7,6 +7,7 @@ import SearchPage from './pages/Search';
 import SearchForm from './components/SearchForm';
 import DetailsPage from './pages/Details';
 import WatchListPage from './pages/WatchList';
+import ProviderList from "./pages/ProviderList";
 
 function App() {
   const [watchList, setWatchList] = useState(
@@ -48,6 +49,12 @@ function App() {
           path="/my-watch-list"
           element={
             <WatchListPage watchList={watchList} toggle={handleToggle} />
+          }
+        />
+        <Route
+          path="/providerList"
+          element={
+            <ProviderList />
           }
         />
       </Routes>

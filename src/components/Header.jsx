@@ -17,6 +17,15 @@ const Header = (props) => {
           </ul>
         </nav>
       </div>
+      <div id="providerNavigation" className="navigation">
+        <nav>
+          <ul>
+            <li>
+              <a href="/providerList">Provider List</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
       {props.children}
     </header>
   );
