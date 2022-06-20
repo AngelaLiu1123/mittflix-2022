@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import providers from '../data/providers';
-import { getShowsByAllProviders } from '../services/tmdb-api';
-import TitleList from '../components/TitleList';
+import { useState, useEffect } from "react";
+import providers from "../data/providers";
+import { getShowsByAllProviders } from "../services/tmdb-api";
+import TitleList from "../components/TitleList";
 function MainPage({ toggle, watchList }) {
   const [shows, setShows] = useState(null);
 
